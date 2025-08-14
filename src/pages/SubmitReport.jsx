@@ -1,14 +1,14 @@
 import { useState } from "react";
+import MapSelector from "../components/MapSelector";
 
 export default function SubmitReport() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Pothole");
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState(""); // Will hold selected location name or lat/lng
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For now, we just alert, later connect to backend + API
     alert(
       `Report Submitted!\nTitle: ${title}\nDescription: ${description}\nCategory: ${category}\nLocation: ${location}`
     );
@@ -18,9 +18,11 @@ export default function SubmitReport() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-6 w-full max-w-md"
+        className="bg-white shadow-md rounded-lg p-6 w-full max-w-lg"
       >
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Submit a Report</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          Submit a Report
+        </h2>
 
         {/* Issue Title */}
         <label className="block mb-4">
@@ -47,31 +49,33 @@ export default function SubmitReport() {
 
         {/* Category */}
         <label className="block mb-4">
-  <span className="block text-gray-700 mb-1">Category</span>
-  <select
-    value={category}
-    onChange={(e) => setCategory(e.target.value)}
-    className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-    required
-  >
-    <option value="Pothole">Pothole</option>
-    <option value="Streetlight">Streetlight</option>
-    <option value="Trash">Trash</option>
-    <option value="Security">Security</option>
-    <option value="Sanitation">Sanitation</option>
-    <option value="Electricity">Electricity</option>
-    <option value="Education/School">Education/School</option>
-    <option value="Health">Health</option>
-    <option value="Environment">Environment</option>
-    <option value="Water">Water</option>
-    <option value="Other">Other</option>
-  </select>
-</label>
+          <span className="block text-gray-700 mb-1">Category</span>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="Select Category">Select Category</option>
+            <option value="Pothole">Pothole</option>
+            <option value="Streetlight">Streetlight</option>
+            <option value="Trash">Trash</option>
+            <option value="Security">Security</option>
+            <option value="Sanitation">Sanitation</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Education/School">Education/School</option>
+            <option value="Health">Health</option>
+            <option value="Environment">Environment</option>
+            <option value="Water">Water</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
 
-
-        {/* Location */}
+        {/* Location Input */}
         <label className="block mb-4">
-          <span className="block text-gray-700 mb-1">Location (Address or Area)</span>
+          <span className="block text-gray-700 mb-1">
+            Location (Address or Area)
+          </span>
           <input
             type="text"
             value={location}
@@ -82,12 +86,12 @@ export default function SubmitReport() {
           />
         </label>
 
-        {/* Placeholder for Map */}
+        {/* Map Selector */}
         <div className="mb-4">
-          <p className="text-gray-500 text-sm mb-2">Or select location on map (Coming Soon)</p>
-          <div className="bg-gray-100 h-40 rounded border border-gray-300 flex items-center justify-center text-gray-400">
-            Map Placeholder
-          </div>
+          <p className="text-gray-500 text-sm mb-2">
+            Or select location on map:
+          </p>
+          <MapSelector onLocationSelect={(coords) => setLocation(coords)} />
         </div>
 
         <button
