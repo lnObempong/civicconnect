@@ -1,12 +1,101 @@
+import { useState } from "react";
+
 export default function SubmitReport() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("Pothole");
+  const [location, setLocation] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // For now, we just alert, later connect to backend + API
+    alert(
+      `Report Submitted!\nTitle: ${title}\nDescription: ${description}\nCategory: ${category}\nLocation: ${location}`
+    );
+  };
+
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Submit a Report</h2>
-      <form className="flex flex-col w-96">
-        <input className="border px-3 py-2 mb-4" type="text" placeholder="Title" />
-        <textarea className="border px-3 py-2 mb-4" placeholder="Description"></textarea>
-        <input className="border px-3 py-2 mb-4" type="text" placeholder="Location" />
-        <button className="bg-green-500 text-white px-4 py-2 rounded">Submit</button>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded-lg p-6 w-full max-w-md"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">Submit a Report</h2>
+
+        {/* Issue Title */}
+        <label className="block mb-4">
+          <span className="block text-gray-700 mb-1">Issue Title</span>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </label>
+
+        {/* Description */}
+        <label className="block mb-4">
+          <span className="block text-gray-700 mb-1">Description</span>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          ></textarea>
+        </label>
+
+        {/* Category */}
+        <label className="block mb-4">
+  <span className="block text-gray-700 mb-1">Category</span>
+  <select
+    value={category}
+    onChange={(e) => setCategory(e.target.value)}
+    className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  >
+    <option value="Pothole">Pothole</option>
+    <option value="Streetlight">Streetlight</option>
+    <option value="Trash">Trash</option>
+    <option value="Security">Security</option>
+    <option value="Sanitation">Sanitation</option>
+    <option value="Electricity">Electricity</option>
+    <option value="Education/School">Education/School</option>
+    <option value="Health">Health</option>
+    <option value="Environment">Environment</option>
+    <option value="Water">Water</option>
+    <option value="Other">Other</option>
+  </select>
+</label>
+
+
+        {/* Location */}
+        <label className="block mb-4">
+          <span className="block text-gray-700 mb-1">Location (Address or Area)</span>
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Type your location or select on map"
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </label>
+
+        {/* Placeholder for Map */}
+        <div className="mb-4">
+          <p className="text-gray-500 text-sm mb-2">Or select location on map (Coming Soon)</p>
+          <div className="bg-gray-100 h-40 rounded border border-gray-300 flex items-center justify-center text-gray-400">
+            Map Placeholder
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

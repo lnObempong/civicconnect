@@ -1,18 +1,43 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Mock validation
+    if (username === "user" && password === "pass") {
+      navigate("/dashboard"); // redirect to dashboard on success
+    } else {
+      alert("Invalid credentials");
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
-      <input
-        className="border px-3 py-2 mb-4 w-64"
-        type="text"
-        placeholder="Username"
-      />
-      <input
-        className="border px-3 py-2 mb-4 w-64"
-        type="password"
-        placeholder="Password"
-      />
-      <button className="bg-green-500 text-white px-4 py-2 rounded">Login</button>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", width: "300px" }}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          style={{ marginBottom: "10px", padding: "8px" }}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ marginBottom: "10px", padding: "8px" }}
+        />
+        <button type="submit" style={{ padding: "8px", backgroundColor: "#4ade80", color: "#fff" }}>
+          Login
+        </button>
+      </form>
     </div>
   );
 }
