@@ -1,43 +1,19 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-export default function Dashboard() {
-  const [reports, setReports] = useState([]);
-
-  useEffect(() => {
-    const storedReports = JSON.parse(localStorage.getItem("reports")) || [];
-    setReports(storedReports);
-  }, []);
-
+// src/pages/Dashboard.jsx
+export default function Dashboard({ reports }) {
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-        <Link
-          to="/report"
-          className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition"
-        >
-          Submit Report
-        </Link>
-      </div>
-
+    <div className="p-8 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
       {reports.length === 0 ? (
         <p className="text-gray-600">No reports submitted yet.</p>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4">
           {reports.map((report, index) => (
-            <div
-              key={index}
-              className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition"
-            >
-              <h2 className="font-bold text-lg mb-2">{report.title}</h2>
-              <p className="text-sm text-gray-500 mb-2">
-                Category: {report.category}
-              </p>
-              <p className="text-gray-700 mb-2">{report.description}</p>
-              <p className="text-sm text-gray-500">Location: {report.location}</p>
-              <p className="text-xs text-gray-400 mt-2">Date: {report.date}</p>
-              <p className="text-xs text-blue-500 mt-1">Status: {report.status}</p>
+            <div key={index} className="bg-white shadow-md rounded-lg p-4 border">
+              <h2 className="text-xl font-semibold">{report.title}</h2>
+              <p className="text-gray-700">{report.description}</p>
+              <p><strong>Category:</strong> {report.category}</p>
+              <p><strong>Address:</strong> {report.location.address}</p>
+              <p><strong>Date:</strong> {report.date}</p>
             </div>
           ))}
         </div>
