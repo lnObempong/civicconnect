@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { useState } from "react";
+import "leaflet/dist/leaflet.css";
 
 function LocationMarker({ onLocationSelect }) {
   const [position, setPosition] = useState(null);
@@ -7,7 +8,7 @@ function LocationMarker({ onLocationSelect }) {
   useMapEvents({
     click(e) {
       setPosition(e.latlng);
-      onLocationSelect(`Lat: ${e.latlng.lat}, Lng: ${e.latlng.lng}`);
+      onLocationSelect(`${e.latlng.lat}, ${e.latlng.lng}`);
     },
   });
 
@@ -16,17 +17,18 @@ function LocationMarker({ onLocationSelect }) {
 
 export default function MapSelector({ onLocationSelect }) {
   return (
-    <MapContainer
-      center={[7.9465, -1.0232]} // Ghana center
-      zoom={7}
-      style={{ height: "250px", width: "100%" }}
-      className="rounded border border-gray-300"
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <LocationMarker onLocationSelect={onLocationSelect} />
-    </MapContainer>
+    <div className="h-64 w-full rounded-lg overflow-hidden border border-gray-300">
+      <MapContainer
+        center={[7.9465, -1.0232]} // Centered in Ghana
+        zoom={6}
+        className="h-full w-full"
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution="&copy; OpenStreetMap contributors"
+        />
+        <LocationMarker onLocationSelect={onLocationSelect} />
+      </MapContainer>
+    </div>
   );
 }
