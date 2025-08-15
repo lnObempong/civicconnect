@@ -38,12 +38,10 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="bg-gray-200 p-4 text-center">
-        <ul className="flex justify-center gap-6 text-gray-700">
-          <li><Link to="/about" className="hover:underline">About Us</Link></li>
-          <li><Link to="/contact" className="hover:underline">Contact</Link></li>
-          <li><Link to="/privacy" className="hover:underline">Privacy Policy</Link></li>
+          <ul className="flex justify-center gap-6 text-gray-700">
+         <li><Link to="/privacy" className="hover:underline">Privacy Policy</Link></li>
         </ul>
-      </footer>
+    </footer>
     </div>
   );
 }

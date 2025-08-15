@@ -1,34 +1,47 @@
-// src/pages/Dashboard.jsx
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
-  const [reports, setReports] = useState([
-    { id: 1, title: "Pothole on Main St", category: "Pothole", status: "Pending" },
-    { id: 2, title: "Broken streetlight on Elm St", category: "Streetlight", status: "Resolved" },
-  ]);
+  const [reports, setReports] = useState([]);
+
+  useEffect(() => {
+    const storedReports = JSON.parse(localStorage.getItem("reports")) || [];
+    setReports(storedReports);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-100 p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Your Reports</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
         <Link
           to="/report"
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+          className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition"
         >
-          Submit New Report
+          Submit Report
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {reports.map((report) => (
-          <div key={report.id} className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-            <h2 className="text-xl font-bold mb-1">{report.title}</h2>
-            <p className="text-gray-700">Category: {report.category}</p>
-            <p className="text-gray-600 mt-1">Status: {report.status}</p>
-          </div>
-        ))}
-      </div>
+      {reports.length === 0 ? (
+        <p className="text-gray-600">No reports submitted yet.</p>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {reports.map((report, index) => (
+            <div
+              key={index}
+              className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition"
+            >
+              <h2 className="font-bold text-lg mb-2">{report.title}</h2>
+              <p className="text-sm text-gray-500 mb-2">
+                Category: {report.category}
+              </p>
+              <p className="text-gray-700 mb-2">{report.description}</p>
+              <p className="text-sm text-gray-500">Location: {report.location}</p>
+              <p className="text-xs text-gray-400 mt-2">Date: {report.date}</p>
+              <p className="text-xs text-blue-500 mt-1">Status: {report.status}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
