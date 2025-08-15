@@ -18,7 +18,7 @@ export default function Login() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
-      <h1>Login</h1>
+      <h1 className="text-2xl font-bold">Login</h1>
       <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", width: "300px" }}>
         <input
           type="text"

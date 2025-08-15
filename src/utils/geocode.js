@@ -1,7 +1,7 @@
 // src/utils/geocode.js
 import axios from "axios";
 
-const API_KEY = "f77b8c8f1a8a4124856b2f12118b4ed8";
+const API_KEY = "92d4004f3de24b20bdf2c29678ba53c4";
 const BASE_URL = "https://api.opencagedata.com/geocode/v1/json";
 
 export const reverseGeocode = async (lat, lng) => {
