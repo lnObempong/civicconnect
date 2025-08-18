@@ -6,7 +6,7 @@ export default function Landing() {
       {/* Hero Section with Background Image */}
       <section
         className="flex flex-col items-center justify-center text-center px-4 min-h-screen bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/landing-bg.jpg')" }} // Your image path
+        style={{ backgroundImage: "url('/images/landing-bg.jpg')" }} 
       >
         <div className="bg-black bg-opacity-50 p-8 rounded-lg">
           <h1 className="text-5xl font-extrabold mb-4 text-white">
@@ -17,7 +17,7 @@ export default function Landing() {
           </p>
           <Link
             to="/login"
-            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+            className="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-900 transition"
           >
             Get Started
           </Link>
