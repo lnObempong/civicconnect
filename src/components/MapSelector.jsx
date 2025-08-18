@@ -1,41 +1,58 @@
-// src/components/MapSelector.jsx
-import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
-import { reverseGeocode } from "../utils/geocode";
+import { useState, useEffect } from "react";
+import "leaflet/dist/leaflet.css";
 
-export default function MapSelector({ onLocationSelect }) {
+export default function MapSelector({ onLocationSelect, regionBounds }) {
   const [position, setPosition] = useState(null);
-  const [address, setAddress] = useState("");
 
   function LocationMarker() {
     useMapEvents({
       click: async (e) => {
         const { lat, lng } = e.latlng;
-        setPosition([lat, lng]);
-        const fetchedAddress = await reverseGeocode(lat, lng);
-        setAddress(fetchedAddress);
-        onLocationSelect({ lat, lng, address: fetchedAddress });
+        setPosition(e.latlng);
+
+        // ✅ Reverse geocoding using Nominatim
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`
+        );
+        const data = await res.json();
+
+        const addr = data.address;
+        const district =
+          addr.county ||
+          addr.district ||
+          addr.region ||
+          addr.state ||
+          addr.city ||
+          addr.town ||
+          addr.village ||
+          data.display_name;
+
+        onLocationSelect({
+          lat,
+          lng,
+          address: district, // ✅ District or nearest admin division
+        });
       },
     });
 
-    return position ? <Marker position={position}></Marker> : null;
+    return position === null ? null : <Marker position={position}></Marker>;
   }
 
   return (
-    <div>
+    <div className="h-96 w-full mb-4 rounded-lg overflow-hidden shadow">
       <MapContainer
         center={[7.9465, -1.0232]} // Ghana center
-        zoom={7}
-        style={{ height: "300px", width: "100%" }}
+        zoom={6}
+        style={{ height: "100%", width: "100%" }}
+        bounds={regionBounds || null} // ✅ restrict to selected region
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
         <LocationMarker />
       </MapContainer>
-      {address && (
-        <p className="mt-2 text-gray-600">
-          <strong>Selected Address:</strong> {address}
-        </p>
-      )}
     </div>
   );
 }

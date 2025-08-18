@@ -4,6 +4,9 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import SubmitReport from "./pages/SubmitReport";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
@@ -15,7 +18,7 @@ function Layout({ children }) {
       {/* Show Navbar only if NOT on Landing or Login */}
       {location.pathname !== "/" && location.pathname !== "/login" && <Navbar />}
       <div className="flex-grow">{children}</div>
-      {/* Hide footer only on Landing */}
+      {/* Show footer only if NOT on Landing */}
       {location.pathname !== "/" && <Footer />}
     </div>
   );
@@ -35,10 +38,10 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard reports={reports} />} />
-          <Route
-            path="/report"
-            element={<SubmitReport onSubmit={handleReportSubmit} />}
-          />
+          <Route path="/report" element={<SubmitReport onSubmit={handleReportSubmit} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/Privacy" element={<Privacy />} />
         </Routes>
       </Layout>
     </Router>

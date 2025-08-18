@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png"; // Add your logo file in src/assets/
 
 export default function Navbar() {
   const location = useLocation();
@@ -9,9 +10,19 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-green-800 text-white px-6 py-4 flex justify-between items-center shadow-md">
-      <h1 className="text-xl font-bold">CivicConnect</h1>
-      <ul className="flex gap-6">
+    <nav className="bg-yellow-900 text-white px-6 py-4 flex justify-between items-center shadow-md">
+      {/* Logo and Title */}
+      <div className="flex items-center gap-3">
+        <img
+          src={logo}
+          alt="CivicConnect Logo"
+          className="w-15 h-10  border-2 border-white object-cover"
+        />
+        <h1 className="text-xl font-bold">CivicConnect</h1>
+      </div>
+
+      {/* Navigation Links */}
+      <ul className="flex gap-6 items-center">
         {navLinks.map((link, index) => (
           <li key={index}>
             <Link
