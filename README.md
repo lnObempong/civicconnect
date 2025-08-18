@@ -1,7 +1,7 @@
 
 ---
 
-# **Community Issue Reporting App**
+# **CivicConnect**
 
 A **React-based web application** that allows users to **report community issues** by providing a title, description, category, region, exact location via an interactive map, and an optional photo upload. This app is designed to help citizens report issues like **sanitation, security, water, electricity, education, and environment**.
 
@@ -102,16 +102,16 @@ npm start
 
 ---
 
-## **📸 Screenshots (Add Later)**
+## **📸 Screenshots **
 
 * **Landing Page**
-  <img width="1366" height="768" alt="Screenshot (904)" src="https://github.com/user-attachments/assets/8b57479b-9aa5-464e-b547-1ced4ab58854" />
+<img width="1366" height="768" alt="Screenshot (904)" src="https://github.com/user-attachments/assets/8b57479b-9aa5-464e-b547-1ced4ab58854" />
 
  * **Login**
-   <img width="1366" height="768" alt="Screenshot (905)" src="https://github.com/user-attachments/assets/2dedad6e-bdb3-4154-87e2-8de68a850772" />
+<img width="1366" height="768" alt="Screenshot (905)" src="https://github.com/user-attachments/assets/2dedad6e-bdb3-4154-87e2-8de68a850772" />
 
 * **Report Form**
-  <img width="1366" height="768" alt="Screenshot (906)" src="https://github.com/user-attachments/assets/d62bded8-281c-446d-8cd5-0236c365c40e" />
+<img width="1366" height="768" alt="Screenshot (906)" src="https://github.com/user-attachments/assets/d62bded8-281c-446d-8cd5-0236c365c40e" />
   
 
 * **Map Location Selection**
