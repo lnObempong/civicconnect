@@ -104,7 +104,7 @@ npm start
 
 ## **📸 Screenshots (Add Later)**
 
-* **Login Page**
+* **Landing Page**
   <img width="1366" height="768" alt="Screenshot (904)" src="https://github.com/user-attachments/assets/8b57479b-9aa5-464e-b547-1ced4ab58854" />
 
  * **Login**
@@ -167,7 +167,6 @@ npm start
 
 * 🔐 Secure Authentication (JWT)
 * 🖼 Photo Preview before upload
-* ☁ Upload to Cloud (Firebase/S3)
 * 📊 Dashboard with filters (region, category)
 * 📱 Mobile Responsive Design
 
