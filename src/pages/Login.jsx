@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react"; // For password toggle icons
+import logo from "../assets/logo.png"; // Add your logo in assets folder
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -12,7 +14,6 @@ export default function Login() {
 
   const validateForm = () => {
     const newErrors = {};
-
     if (!username.trim()) {
       newErrors.username = "Username is required";
     } else if (username.length < 3) {
@@ -34,32 +35,34 @@ export default function Login() {
     if (!validateForm()) return;
 
     setLoading(true);
-
     setTimeout(() => {
-      // Mock authentication with hashed comparison simulation
       const validUser = "user";
       const validPass = "pass123";
-
       if (username === validUser && password === validPass) {
         navigate("/dashboard");
       } else {
         setErrors({ general: "Invalid username or password" });
       }
-
       setLoading(false);
-    }, 1000);
+    }, 1500);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-yellow-100 to-yellow-300 p-4">
+      <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-sm transform transition-all hover:scale-105 duration-300">
+        
+        {/* Logo & Title */}
+        <div className="flex flex-col items-center mb-6">
+          <img src={logo} alt="Logo" className="w-16 h-16 mb-3" />
+          <h1 className="text-3xl font-bold text-yellow-900">Welcome Back</h1>
+          <p className="text-gray-500 text-sm mt-1">Sign in to continue</p>
+        </div>
 
         {errors.general && (
           <p className="text-red-500 text-center mb-4">{errors.general}</p>
         )}
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-5">
           {/* Username */}
           <div>
             <input
@@ -67,10 +70,10 @@ export default function Login() {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-700 transition"
             />
             {errors.username && (
-              <p className="text-red-500 text-sm">{errors.username}</p>
+              <p className="text-red-500 text-sm mt-1">{errors.username}</p>
             )}
           </div>
 
@@ -81,17 +84,17 @@ export default function Login() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-700 transition"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-2 top-2 text-gray-600"
+              className="absolute right-3 top-3 text-gray-600 hover:text-yellow-700"
             >
-              {showPassword ? "👁️" : "🙈" }
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
             {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password}</p>
+              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
             )}
           </div>
 
@@ -99,11 +102,17 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full p-2 rounded text-white ${
-              loading ? "bg-gray-400" : "bg-yellow-900 hover:bg-yellow-700"
+            className={`w-full p-3 rounded-lg text-white font-semibold transition flex justify-center items-center ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-yellow-900 hover:bg-yellow-700"
             }`}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? (
+              <span className="animate-spin border-2 border-white border-t-transparent rounded-full w-5 h-5"></span>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
       </div>
