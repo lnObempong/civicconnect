@@ -105,20 +105,20 @@ npm start
 ## **📸 Screenshots **
 
 * **Landing Page**
-<img width="1366" height="768" alt="Screenshot (904)" src="https://github.com/user-attachments/assets/8b57479b-9aa5-464e-b547-1ced4ab58854" />
+<img width="1366" height="768" alt="Screenshot (910)" src="https://github.com/user-attachments/assets/1911f65a-1a60-45be-9447-5c7b4a869472" />
+<img width="1366" height="768" alt="Screenshot (911)" src="https://github.com/user-attachments/assets/50ce6169-4477-436a-b8b0-6b03662d3d87" />
 
  * **Login**
-<img width="1366" height="768" alt="Screenshot (905)" src="https://github.com/user-attachments/assets/2dedad6e-bdb3-4154-87e2-8de68a850772" />
+<img width="1366" height="768" alt="Screenshot (912)" src="https://github.com/user-attachments/assets/ce747a6d-fb34-4125-9b5b-b3a209ebd86e" />
 
 * **Report Form**
-<img width="1366" height="768" alt="Screenshot (906)" src="https://github.com/user-attachments/assets/d62bded8-281c-446d-8cd5-0236c365c40e" />
-  
+<img width="1366" height="768" alt="Screenshot (914)" src="https://github.com/user-attachments/assets/15ed1be5-06db-4c97-b685-4f637a31a9f6" />
 
 * **Map Location Selection**
-<img width="1366" height="768" alt="Screenshot (908)" src="https://github.com/user-attachments/assets/4c56f327-ab9f-4e22-a4e4-9e9c17749ffe" />
+<img width="1366" height="768" alt="Screenshot (915)" src="https://github.com/user-attachments/assets/bd90c41f-8d6c-40a0-b33d-945ab98b7c41" />
 
 * **Dashboard**
-<img width="1366" height="768" alt="Screenshot (909)" src="https://github.com/user-attachments/assets/1ac68d9e-c0c2-4e7f-ad90-1a6e7f33cae3" />
+<img width="1366" height="768" alt="Screenshot (913)" src="https://github.com/user-attachments/assets/acd6415e-0872-47b9-ae85-493cb592a889" />
 
 ---
 
