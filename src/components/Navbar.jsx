@@ -20,7 +20,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="CivicConnect Logo"
-            className="w-12 h-12 rounded-full border-2 border-white object-cover"
+            className="w-12 h-15   object-cover"
           />
           <h1 className="text-2xl font-bold tracking-wide">CivicConnect</h1>
         </div>
