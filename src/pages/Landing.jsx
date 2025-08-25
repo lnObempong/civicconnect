@@ -53,14 +53,10 @@ export default function Landing() {
       </section>
 
       {/* ✅ Footer */}
-      <footer className="bg-gray-900 text-gray-400 p-6 text-center">
+      <footer className="bg-gray-600 text-gray-400 p-6 text-center">
         <p className="mb-4">© {new Date().getFullYear()} CivicConnect. All rights reserved.</p>
         <ul className="flex justify-center gap-6 text-gray-300">
-          <li>
-            <Link to="/privacy" className="hover:underline">
-              Privacy Policy
-            </Link>
-          </li>
+          
         </ul>
       </footer>
     </div>

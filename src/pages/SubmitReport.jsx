@@ -159,7 +159,7 @@ export default function SubmitReport({ onSubmit }) {
                     <option value="environment">Environment</option>
                     <option value="water">Water</option>
                     <option value="galamsey">Galamsey</option>
-                    <option value="other">Any Other</option>
+                    <option value="other">Other</option>
                   </select>
 
                   <select
