@@ -42,17 +42,19 @@ export default function Privacy() {
         </ul>
 
         {/* Contact Section */}
-        <div className="mt-6 p-6 bg-gray-50 rounded-lg shadow-inner">
-          <p className="text-gray-700 flex items-center gap-2">
-            <FaEnvelope className="text-yellow-600" />
-            You can contact us at{" "}
-            <a
-              href="mailto:leonardobempng@gmail.com"
-              className="text-yellow-600 font-semibold hover:underline"
-            >
-              leonardobempng@gmail.com
-            </a>{" "}
-            for any questions or concerns regarding your privacy.
+      <div className="mt-6 p-6 bg-gray-50 rounded-lg shadow-inner">
+          <p className="text-gray-700 flex flex-col sm:flex-row items-start sm:items-center gap-2 text-center sm:text-left">
+           <span className="flex items-center gap-2">
+      <FaEnvelope className="text-yellow-600 text-lg" />
+            <span>You can contact us at</span>
+          </span>
+         <a
+             href="mailto:leonardobempng@gmail.com"
+              className="text-yellow-600 font-semibold hover:underline break-all"
+           >
+                leonardobempng@gmail.com
+           </a>
+             <span className="sm:ml-2">for any questions or concerns regarding your privacy.</span>
           </p>
         </div>
       </div>
