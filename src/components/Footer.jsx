@@ -96,7 +96,7 @@ export default function Footer() {
 
       {/* Bottom Divider */}
       <div className="border-t border-yellow-700 mt-6 pt-4 text-center text-xs opacity-70">
-        Empowering citizens through technology ✨
+        Be the Steward! 
       </div>
     </footer>
   );
